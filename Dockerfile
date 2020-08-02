@@ -79,14 +79,6 @@ RUN cd ..
 
 RUN rm -rf Python-3.6.3*
 
-#Setting up the pip url for internal packages
-ENV PIP_IP=54.245.179.143
-ENV PIP_PORT=80
-ENV PIP_URL="http://$PIP_IP:$PIP_PORT/"
-ENV PIP_EXTRA_INDEX_URL=$PIP_URL
-RUN mkdir ~/.pip
-RUN touch ~/.pip/pip.conf
-RUN echo "[global]\nextra-index-url = $PIP_URL\n[install]\ntrusted-host=$PIP_IP" > ~/.pip/pip.conf
 #Installing dependencies for R
 RUN  apt-get install -y --no-install-recommends \
 		libcurl4-openssl-dev \
